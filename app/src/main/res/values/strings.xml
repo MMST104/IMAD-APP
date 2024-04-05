@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">IMAD Project 2</string>
+    <string name="historyscroll">HistoryScroll</string>
+    <string name="history">History</string>
+    <string name="button">Button</string>
+    <string name="history_of_the_ages">History Of The Ages</string>
+</resources>
