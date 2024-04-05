@@ -11,29 +11,29 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Setup RecyclerView
-        setupRecyclerView()
 
         // Set click listener for the button
-        // This should be placed inside onCreate() or a method that is called from onCreate()
+        val textInput = findViewById<EditText>(R.id.NumberBar2)
+        val textView = findViewById<TextView>(R.id.textView2)
 
-
-            val textInput = findViewById<EditText>(R.id.NumberBar2)
+        textInput.setOnEditorActionListener { _, _, _ ->
             val text = textInput.text.toString().toIntOrNull()
-            val message = when (text) {
-                in 0..9 -> "Nelson Mandela"
-                in 10..19 -> "Martin Luther King Jr."
-                in 20..29 -> "Does this test work?"
-                else -> "Number is out of range, select a number between 0 and 100"
+            val message: String = if (text != null) {
+                if (text in 0..9) {
+                    "Nelson Mandela"
+                } else if (text in 10..19) {
+                    "Martin Luther King Jr."
+                } else if (text in 20..29) {
+                    "Does this test work?"
+                } else {
+                    "Number is out of range, select a number between 0 and 100"
+                }
+            } else {
+                "Invalid input, please enter a number"
             }
-            // You should have a TextView with ID textView2 to set the message
-            val textView = findViewById<TextView>(R.id.textView2)
             textView.text = message
+            true
         }
     }
 
-    private fun setupRecyclerView() {
-        // Additional code for setting up RecyclerView goes here
-        // You should have a RecyclerView with ID recyclerView in your layout
-    }
-
+}
